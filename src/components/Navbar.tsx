@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Navbar({ introState }: { introState: "playing" | "fading" | "done" }) {
   const isVisible = introState === "fading" || introState === "done";
+  const pathname = usePathname();
   
   // Guard flag for the one-time PlayStation 5 power-on light sweep
   const [shouldSweep, setShouldSweep] = useState(false);
@@ -73,16 +75,15 @@ export function Navbar({ introState }: { introState: "playing" | "fading" | "don
       </motion.div>
 
       <div className="flex items-center relative z-10">
-        <span className="font-bold text-xl tracking-tighter text-white">PLAY RENT</span>
+        <Link href="/" className="font-bold text-xl tracking-tighter text-white">PLAY RENT</Link>
       </div>
 
-      <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium text-white/70">
-        <Link href="#home" className="hover:text-white transition-colors">Home</Link>
-        <Link href="#ps5" className="hover:text-white transition-colors">PS5</Link>
-        <Link href="#ps4" className="hover:text-white transition-colors">PS4</Link>
-        <Link href="#games" className="hover:text-white transition-colors">Games</Link>
-        <Link href="#how-it-works" className="hover:text-white transition-colors">How It Works</Link>
-        <Link href="#pricing" className="hover:text-white transition-colors">Pricing</Link>
+      <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium">
+        <Link href="/" className={`transition-colors ${pathname === "/" ? "text-[#3b82f6] font-semibold" : "text-white/70 hover:text-white"}`}>Home</Link>
+        <Link href="/ps5" className={`transition-colors ${pathname === "/ps5" ? "text-[#3b82f6] font-semibold" : "text-white/70 hover:text-white"}`}>PS5</Link>
+        {/* Placeholder links that can be converted later if these get their own pages */}
+        <Link href="#games" className="text-white/70 hover:text-white transition-colors">Games</Link>
+        <Link href="#pricing" className="text-white/70 hover:text-white transition-colors">Pricing</Link>
       </nav>
 
       <div className="flex items-center">
