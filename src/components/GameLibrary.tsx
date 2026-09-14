@@ -3,32 +3,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useMotionValue, useAnimationFrame, animate } from 'framer-motion';
 
-const GAMES = [
-  { title: 'GTA V', genre: 'Open World', color: 'from-orange-900 to-yellow-900', image: '/images/games/GTAV.jpg' },
-  { title: 'Minecraft', genre: 'Sandbox', color: 'from-green-700 to-green-900', image: '/images/games/minecraft.jpg' },
-  { title: 'Tekken 7', genre: 'Fighting', color: 'from-red-900 to-red-950', image: '/images/games/tekken7.jpg' },
-  { title: 'FIFA 24', genre: 'Sports', color: 'from-emerald-800 to-teal-900', image: '/images/games/fc24.jpg' },
-  { title: 'God Of War', genre: 'Action / RPG', color: 'from-slate-800 to-slate-900', image: '/images/games/GOD.jpg' },
-  { title: 'Call of Duty', genre: 'Shooter', color: 'from-gray-800 to-gray-900', image: '/images/games/COD.jpg' },
-  { title: 'Black Ops III', genre: 'Shooter', color: 'from-orange-800 to-neutral-900', image: '/images/games/ops3.jpg' },
-  { title: 'MK11', genre: 'Fighting', color: 'from-yellow-800 to-red-900', image: '/images/games/mk11.jpg' },
-  { title: 'NBA 2K17', genre: 'Sports', color: 'from-blue-800 to-red-900', image: '/images/games/NBA17.jpg' },
-  { title: 'NFS', genre: 'Racing', color: 'from-purple-900 to-pink-900', image: '/images/games/NFS.jpg' },
-  { title: 'RDR 2', genre: 'Action / Adventure', color: 'from-red-900 to-amber-900', image: '/images/games/RDR.jpg' },
-  { title: 'A Way Out', genre: 'Co-op', color: 'from-orange-800 to-yellow-800', image: '/images/games/wayout.jpg' },
-  { title: 'Pacify', genre: 'Horror', color: 'from-zinc-800 to-zinc-950', image: '/images/games/pacify.jpg' },
-  { title: 'Asphalt Legends', genre: 'Racing', color: 'from-blue-800 to-purple-900', image: '/images/games/asphalt.jpg' },
-  { title: 'Rocket League', genre: 'Sports / Action', color: 'from-cyan-700 to-blue-900', image: '/images/games/rocket.jpg' },
-  { title: 'Uncharted', genre: 'Action / Adventure', color: 'from-emerald-900 to-teal-950', image: '/images/games/uncharted.jpg' },
-  { title: 'Fortnite', genre: 'Battle Royale', color: 'from-purple-600 to-fuchsia-900', image: '/images/games/fortnite.jpg' },
-  { title: 'FIFA 19', genre: 'Sports', color: 'from-slate-700 to-slate-900', image: '/images/games/fifa19.jpg' },
-  { title: 'Spider-Man', genre: 'Action', color: 'from-red-700 to-blue-900', image: '/images/games/spiderman.jpg' },
-  { title: 'WWE 2K25', genre: 'Sports / Fighting', color: 'from-stone-800 to-stone-900', image: '/images/games/wwe25.jpg' },
-  { title: 'Valorant', genre: 'Tactical Shooter', color: 'from-red-600 to-red-900', image: '/images/games/valorant.jpg' },
-];
-
-// 4 copies for seamless infinite looping using transforms
-const ALL_GAMES = [...GAMES, ...GAMES, ...GAMES, ...GAMES];
+import { GAMES } from '@/data/games';
 
 function GameCard({ game }: { game: typeof GAMES[0] }) {
   return (
@@ -52,7 +27,10 @@ function GameCard({ game }: { game: typeof GAMES[0] }) {
   );
 }
 
-export function GameLibrary() {
+export function GameLibrary({ games = GAMES }: { games?: typeof GAMES }) {
+  // 4 copies for seamless infinite looping using transforms
+  const ALL_GAMES = [...games, ...games, ...games, ...games];
+
   const headingRef = useRef<HTMLDivElement>(null);
   const inView = useInView(headingRef, { once: true, margin: '-60px' });
   const trackRef = useRef<HTMLDivElement>(null);

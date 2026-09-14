@@ -61,12 +61,12 @@ export function CanvasRenderer({ numFrames, scrollYProgress }: CanvasRendererPro
   const renderFrame = (index: number) => {
     const safeIndex = Math.max(1, Math.min(index, numFrames));
     if (!images[safeIndex - 1] || !canvasRef.current || !containerRef.current) return;
-    
+
     const canvas = canvasRef.current;
     const container = containerRef.current;
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
-    
+
     const img = images[safeIndex - 1];
 
     if (canvas.width !== container.clientWidth || canvas.height !== container.clientHeight) {
@@ -80,11 +80,11 @@ export function CanvasRenderer({ numFrames, scrollYProgress }: CanvasRendererPro
 
     const hRatio = canvas.width / img.width;
     const vRatio = canvas.height / img.height;
-    
+
     const isMobile = window.innerWidth < 768;
     const mobileSafeRatio = isMobile ? Math.min(hRatio * 0.9, vRatio) : Math.min(hRatio, vRatio) * 1.05;
-    const ratio = mobileSafeRatio; 
-    
+    const ratio = mobileSafeRatio;
+
     const offsetX = isMobile ? 0 : canvas.width * 0.15;
     const offsetY = isMobile ? canvas.height * 0.25 : canvas.height * 0.05;
 
@@ -122,27 +122,27 @@ export function CanvasRenderer({ numFrames, scrollYProgress }: CanvasRendererPro
 
   return (
     <div ref={containerRef} className="w-full h-full relative flex items-center justify-center">
-      
+
       {/* 
         PERFORMANCE FIX: 
         Removed mix-blend-screen and reduced blur radius. 
         Massive CSS blurs with complex blend modes cause massive GPU compositor bottlenecks during scroll!
       */}
-      <motion.div 
+      <motion.div
         style={{ opacity: bloomOpacity }}
         className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 transition-opacity duration-300 will-change-transform"
       >
-         <div className="w-[40vw] h-[40vw] bg-[#0070CC] rounded-full blur-[100px]" />
+        <div className="w-[40vw] h-[40vw] bg-[#0070CC] rounded-full blur-[100px]" />
       </motion.div>
-      
+
       {!isLoaded && (
         <div className="absolute z-20 flex flex-col items-center justify-center">
-           <p className="text-white/50 font-medium tracking-widest text-sm uppercase animate-pulse">
-             Loading Cinematic Experience...
-           </p>
+          <p className="text-white/50 font-medium tracking-widest text-sm uppercase animate-pulse">
+            Loading Cinematic Experience...
+          </p>
         </div>
       )}
-      
+
       {/* Continuous Ambient Idle Motion */}
       <motion.canvas
         animate={{ y: [0, -12, 0] }}

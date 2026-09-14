@@ -4,6 +4,7 @@ import { Navbar } from '@/components/Navbar';
 import { PS5Hero } from '@/components/PS5Hero';
 import { GameLibrary } from '@/components/GameLibrary';
 import { PS5Pricing } from '@/components/PS5Pricing';
+import { BookingCTA } from '@/components/BookingCTA';
 import { Footer } from '@/components/Footer';
 
 export function PS5Page() {
@@ -34,6 +35,9 @@ export function PS5Page() {
 
       {/* Section 3 — PS5 Pricing (3D device, PS5-only, no toggle) */}
       <PS5Pricing />
+
+      {/* 4. CROSS-SELL / CTA */}
+      <BookingCTA showOnly="ps5" />
 
       <Footer />
     </main>

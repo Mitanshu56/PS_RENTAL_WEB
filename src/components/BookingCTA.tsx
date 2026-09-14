@@ -1,6 +1,8 @@
 "use client";
 
-export function BookingCTA() {
+import Link from "next/link";
+
+export function BookingCTA({ showOnly }: { showOnly?: 'ps5' | 'ps4' } = {}) {
   return (
     <section id="book" className="py-32 bg-brand-bg-primary relative z-10 border-t border-white/5 overflow-hidden">
       {/* Background Glow */}
@@ -18,12 +20,16 @@ export function BookingCTA() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <button className="w-full sm:w-auto px-12 py-5 bg-white text-black hover:bg-gray-200 text-lg font-bold rounded-full transition-colors shadow-2xl">
-            BOOK YOUR PS5
-          </button>
-          <button className="w-full sm:w-auto px-12 py-5 bg-brand-accent-blue/10 border border-brand-accent-blue text-white hover:bg-brand-accent-blue text-lg font-bold rounded-full transition-colors shadow-xl shadow-brand-accent-blue/10">
-            BOOK YOUR PS4
-          </button>
+          {showOnly !== 'ps4' && (
+            <Link href="/ps5" className="w-full sm:w-auto px-12 py-5 bg-white text-black hover:bg-gray-200 text-lg font-bold rounded-full transition-colors shadow-2xl inline-block">
+              BOOK YOUR PS5
+            </Link>
+          )}
+          {showOnly !== 'ps5' && (
+            <Link href="/ps4" className="w-full sm:w-auto px-12 py-5 bg-brand-accent-blue/10 border border-brand-accent-blue text-white hover:bg-brand-accent-blue text-lg font-bold rounded-full transition-colors shadow-xl shadow-brand-accent-blue/10 inline-block">
+              BOOK YOUR PS4
+            </Link>
+          )}
         </div>
         
         <div className="mt-12 flex items-center justify-center">

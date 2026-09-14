@@ -6,7 +6,9 @@ import { IntroSequence } from '@/components/IntroSequence';
 import { Navbar } from '@/components/Navbar';
 import { ScrollyTelling } from '@/components/ScrollyTelling';
 import { RentalCards } from '@/components/RentalCards';
+import { GameLibrary } from '@/components/GameLibrary';
 import { TrustSection } from '@/components/TrustSection';
+import { GoogleReviews } from '@/components/GoogleReviews';
 import { BookingCTA } from '@/components/BookingCTA';
 import { Footer } from '@/components/Footer';
 
@@ -47,7 +49,9 @@ export function HomePage() {
       <Navbar introState={introState} />
       <ScrollyTelling />
       <RentalCards />
+      <GameLibrary />
       <TrustSection />
+      <GoogleReviews />
       <BookingCTA />
       <Footer />
     </main>

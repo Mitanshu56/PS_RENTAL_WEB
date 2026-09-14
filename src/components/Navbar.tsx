@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 export function Navbar({ introState }: { introState: "playing" | "fading" | "done" }) {
   const isVisible = introState === "fading" || introState === "done";
   const pathname = usePathname();
-  
+
   // Guard flag for the one-time PlayStation 5 power-on light sweep
   const [shouldSweep, setShouldSweep] = useState(false);
   const sweepHasPlayed = useRef(false);
@@ -29,9 +29,8 @@ export function Navbar({ introState }: { introState: "playing" | "fading" | "don
       initial={{ opacity: 0, y: -20 }}
       animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 inset-x-0 h-16 z-50 flex items-center justify-between px-6 md:px-12 bg-[#050505]/70 backdrop-blur-lg border-b border-white/5 ${
-        introState === "playing" ? "pointer-events-none" : "pointer-events-auto"
-      }`}
+      className={`fixed top-0 inset-x-0 h-16 z-50 flex items-center justify-between px-6 md:px-12 bg-[#050505]/70 backdrop-blur-lg border-b border-white/5 ${introState === "playing" ? "pointer-events-none" : "pointer-events-auto"
+        }`}
     >
       {/* 
         ONE-TIME PS5 POWER-ON SWEEP 
@@ -81,9 +80,9 @@ export function Navbar({ introState }: { introState: "playing" | "fading" | "don
       <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium">
         <Link href="/" className={`transition-colors ${pathname === "/" ? "text-[#3b82f6] font-semibold" : "text-white/70 hover:text-white"}`}>Home</Link>
         <Link href="/ps5" className={`transition-colors ${pathname === "/ps5" ? "text-[#3b82f6] font-semibold" : "text-white/70 hover:text-white"}`}>PS5</Link>
-        {/* Placeholder links that can be converted later if these get their own pages */}
-        <Link href="#games" className="text-white/70 hover:text-white transition-colors">Games</Link>
-        <Link href="#pricing" className="text-white/70 hover:text-white transition-colors">Pricing</Link>
+        <Link href="/ps4" className={`transition-colors ${pathname === "/ps4" ? "text-[#3b82f6] font-semibold" : "text-white/70 hover:text-white"}`}>PS4</Link>
+        <Link href="/games" className={`transition-colors ${pathname === "/games" ? "text-[#3b82f6] font-semibold" : "text-white/70 hover:text-white"}`}>Games</Link>
+        <Link href="/pricing" className={`transition-colors ${pathname === "/pricing" ? "text-[#3b82f6] font-semibold" : "text-white/70 hover:text-white"}`}>Pricing</Link>
       </nav>
 
       <div className="flex items-center">

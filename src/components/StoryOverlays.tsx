@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, MotionValue, useTransform } from "framer-motion";
+import Link from "next/link";
 
 interface StoryOverlaysProps {
   scrollYProgress: MotionValue<number>;
@@ -62,12 +63,12 @@ export function StoryOverlays({ scrollYProgress, debug = false }: StoryOverlaysP
 
   const CTAButtons = () => (
     <div className="flex flex-wrap gap-4 pt-2">
-      <a href="#book-ps5" className="px-8 py-4 bg-[#0070CC] hover:bg-[#00A8FF] text-white text-center font-bold rounded-full transition-all shadow-xl shadow-[#0070CC]/30 hover:shadow-[#0070CC]/60 hover:scale-105">
+      <Link href="/ps5" className="px-8 py-4 bg-[#0070CC] hover:bg-[#00A8FF] text-white text-center font-bold rounded-full transition-all shadow-xl shadow-[#0070CC]/30 hover:shadow-[#0070CC]/60 hover:scale-105">
         RENT PS5
-      </a>
-      <a href="#games" className="px-8 py-4 bg-transparent hover:bg-white/5 text-white text-center font-bold rounded-full transition-colors border border-white/10">
+      </Link>
+      <Link href="/games" className="px-8 py-4 bg-transparent hover:bg-white/5 text-white text-center font-bold rounded-full transition-colors border border-white/10">
         EXPLORE GAMES
-      </a>
+      </Link>
     </div>
   );
 
@@ -254,6 +255,21 @@ export function StoryOverlays({ scrollYProgress, debug = false }: StoryOverlaysP
         </motion.div>
 
       </div>
+
+      {/* Scroll Down Indicator (Fades out as soon as user starts scrolling) */}
+      <motion.div 
+        style={{ opacity: beat1_opacity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 pointer-events-none"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-2"
+        >
+          <span className="text-white/50 text-xs font-bold tracking-widest uppercase shadow-black drop-shadow-md">Scroll to Assemble</span>
+          <div className="w-[1px] h-8 bg-gradient-to-b from-white/50 to-transparent" />
+        </motion.div>
+      </motion.div>
 
       {/* Subtle Cinematic Progress Indicator */}
       <div className="absolute right-6 top-1/2 -translate-y-1/2 z-30 pointer-events-none hidden md:flex flex-col items-center gap-4 opacity-50">
