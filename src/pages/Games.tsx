@@ -24,12 +24,11 @@ function GameCard({ game }: { game: GameData }) {
       <div className={`absolute inset-0 bg-gradient-to-b ${game.color} opacity-0 transition-opacity duration-500 rounded-xl z-0 ${isOpen ? 'opacity-40 blur-xl' : ''}`} />
 
       {/* Card Container */}
-      <div 
-        className={`relative aspect-[2/3] rounded-[10px] border border-white/10 transition-all duration-300 ease-out bg-[#050505] overflow-hidden ${
-          isOpen 
-            ? 'scale-[1.1] shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-50 border-white/20' 
+      <div
+        className={`relative aspect-[2/3] rounded-[10px] border border-white/10 transition-all duration-300 ease-out bg-[#050505] overflow-hidden ${isOpen
+            ? 'scale-[1.1] shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-50 border-white/20'
             : 'scale-100 shadow-xl z-10'
-        }`}
+          }`}
       >
         {/* Poster */}
         <img src={game.image} alt={game.title} className="absolute inset-0 w-full h-full object-cover z-0" />
@@ -44,7 +43,7 @@ function GameCard({ game }: { game: GameData }) {
           {/* Subtle colored accent inside the detail card */}
           <div className={`absolute inset-0 bg-gradient-to-b ${game.color} opacity-20 pointer-events-none`} />
           <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
-          
+
           <div className="relative z-10 flex flex-col h-full">
             <h3 className="text-white font-black text-xl leading-tight mb-2">
               {game.title}
@@ -62,7 +61,7 @@ function GameCard({ game }: { game: GameData }) {
             <p className="text-white/70 text-sm font-medium leading-relaxed">
               {game.description}
             </p>
-            
+
             <div className="mt-auto">
               <span className="text-[10px] font-bold text-[#3b82f6] uppercase tracking-widest animate-pulse">Included in Rental</span>
             </div>
@@ -110,11 +109,11 @@ export function GamesPage() {
               <span className="w-2 h-2 rounded-full bg-[#3b82f6] animate-pulse" />
               <span className="text-sm font-bold tracking-widest uppercase">The Collection</span>
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
               OUR GAME LIBRARY.
             </h1>
-            
+
             <p className="text-white/60 text-lg md:text-xl font-medium max-w-2xl mx-auto">
               Every title. Every genre. One rental. Dive into our curated collection of next-gen hits and timeless classics.
             </p>
@@ -128,11 +127,10 @@ export function GamesPage() {
               <button
                 key={genre}
                 onClick={() => setActiveFilter(genre)}
-                className={`px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-all duration-300 ${
-                  activeFilter === genre
+                className={`px-5 py-2.5 rounded-full text-sm font-bold tracking-wider transition-all duration-300 ${activeFilter === genre
                     ? "bg-[#3b82f6] text-white shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                     : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white"
-                }`}
+                  }`}
               >
                 {genre.toUpperCase()}
               </button>

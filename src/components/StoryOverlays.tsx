@@ -257,7 +257,7 @@ export function StoryOverlays({ scrollYProgress, debug = false }: StoryOverlaysP
       </div>
 
       {/* Scroll Down Indicator (Fades out as soon as user starts scrolling) */}
-      <motion.div 
+      <motion.div
         style={{ opacity: beat1_opacity }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 pointer-events-none"
       >

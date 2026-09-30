@@ -40,13 +40,13 @@ export function PS4Page() {
       {/* HERO SECTION */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image Parallax */}
-        <motion.div 
-          style={{ y, opacity }} 
+        <motion.div
+          style={{ y, opacity }}
           className="absolute inset-0 w-full h-full"
         >
-          <img 
-            src="/images/ps4-hero.jpg" 
-            alt="PlayStation 4 Console" 
+          <img
+            src="/images/ps4-hero.jpg"
+            alt="PlayStation 4 Console"
             className="w-full h-full object-cover object-center opacity-40 mix-blend-screen"
           />
           {/* Gradients for blending */}
@@ -65,17 +65,17 @@ export function PS4Page() {
               <span className="w-2 h-2 rounded-full bg-[#3b82f6] animate-pulse" />
               <span className="text-sm font-bold tracking-widest uppercase">The Classic</span>
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter uppercase mb-6 relative">
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">STILL A </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#3b82f6] to-[#1e40af]">LEGEND.</span>
             </h1>
-            
+
             <p className="text-white/60 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10">
               The console that defined a generation. An unbeatable library of masterpieces at an incredible value.
             </p>
 
-            <motion.a 
+            <motion.a
               href="#pricing"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -90,7 +90,7 @@ export function PS4Page() {
       {/* STORYTELLING SECTION */}
       <section ref={storyRef} className="py-32 md:py-48 px-6 md:px-12 relative z-10 border-t border-white/5 bg-[#050505]">
         <div className="max-w-5xl mx-auto text-center">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 40 }}
             animate={isStoryInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 0.8, ease: "easeOut" }}

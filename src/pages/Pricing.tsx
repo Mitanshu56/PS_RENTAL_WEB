@@ -31,7 +31,7 @@ const GlowAccent = ({ children }: { children: React.ReactNode }) => (
 
 export function PricingPage() {
   const [activeConsole, setActiveConsole] = useState<"ps5" | "ps4">("ps5");
-  
+
   const currentData = pricingPlans[activeConsole];
   const plans = currentData.plans;
 
@@ -52,7 +52,7 @@ export function PricingPage() {
           <MaskedReveal>GAME ON.</MaskedReveal>
           <MaskedReveal delay={0.1}><GlowAccent>YOUR WAY.</GlowAccent></MaskedReveal>
         </h1>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -106,11 +106,10 @@ export function PricingPage() {
               return (
                 <div
                   key={plan.duration}
-                  className={`relative flex flex-col p-8 rounded-2xl border transition-all duration-300 w-full md:w-[320px] group cursor-default hover:-translate-y-1 ${
-                    isBestValue 
-                      ? "bg-gradient-to-b from-[#3b82f6]/10 to-[#111] border-[#3b82f6]/50 shadow-[0_0_30px_rgba(59,130,246,0.15)] md:-mt-4 md:mb-4" 
+                  className={`relative flex flex-col p-8 rounded-2xl border transition-all duration-300 w-full md:w-[320px] group cursor-default hover:-translate-y-1 ${isBestValue
+                      ? "bg-gradient-to-b from-[#3b82f6]/10 to-[#111] border-[#3b82f6]/50 shadow-[0_0_30px_rgba(59,130,246,0.15)] md:-mt-4 md:mb-4"
                       : "bg-[#111] border-white/10 hover:border-white/20 hover:bg-[#1a1a1a]"
-                  }`}
+                    }`}
                 >
                   {isBestValue && (
                     <div className="absolute -top-3.5 inset-x-0 flex justify-center">
@@ -140,13 +139,12 @@ export function PricingPage() {
                     ))}
                   </ul>
 
-                  <Link 
+                  <Link
                     href={`/${activeConsole}`}
-                    className={`w-full py-4 text-center font-bold rounded-lg text-sm tracking-widest uppercase transition-all ${
-                      isBestValue
+                    className={`w-full py-4 text-center font-bold rounded-lg text-sm tracking-widest uppercase transition-all ${isBestValue
                         ? "bg-[#3b82f6] hover:bg-[#4ea0ff] text-white shadow-[0_0_20px_rgba(59,130,246,0.4)]"
                         : "bg-white/10 hover:bg-white/20 text-white"
-                    }`}
+                      }`}
                   >
                     {currentData.ctaText}
                   </Link>
